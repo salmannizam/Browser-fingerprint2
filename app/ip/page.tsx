@@ -9,7 +9,8 @@ const LoginPage = () => {
     const handleLogin = async () => {
         try {
             const response = await axios.get('/api/ip'); // Correct API route
-            setUserIP(response.data.userIP);
+            console.log(response.data.ip)
+            setUserIP(response.data.ip);
         } catch (error) {
             console.error('Error retrieving user IP:', error);
         }
