@@ -12,10 +12,6 @@ const User = () => {
       const clientInfo = {
         browser: {
           name: navigatorInfo.userAgent,
-          version: navigatorInfo.appVersion,
-        },
-        os: {
-          name: navigatorInfo.platform,
         },
         device: {
           type: /Mobile|Tablet|iPad|iPhone|iPod/.test(navigatorInfo.userAgent)
@@ -26,15 +22,11 @@ const User = () => {
           resolution: `${window.screen.width}x${window.screen.height}`,
           colorDepth: window.screen.colorDepth,
         },
-        plugins: Array.from(navigatorInfo.plugins).map((plugin) => plugin.name),
-        mimeTypes: Array.from(navigatorInfo.mimeTypes).map(
-          (mimeType) => mimeType.type
-        ),
         fonts: Array.from(document.fonts).map((fontFace) => fontFace.family),
         localStorageEnabled: typeof window.localStorage !== "undefined",
         sessionStorageEnabled: typeof window.sessionStorage !== "undefined",
         cookieEnabled: navigatorInfo.cookieEnabled,
-        language: navigatorInfo.language || navigatorInfo.userLanguage,
+        language: navigatorInfo.language ,
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       };
       setClientData(JSON.stringify(clientInfo));
